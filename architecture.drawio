@@ -1,0 +1,215 @@
+<mxfile host="app.diagrams.net" modified="2026-01-30T00:00:00.000Z" agent="Draw.io Parser MCP" version="1.0.0">
+  <diagram id="architecture" name="Architecture">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        
+        <!-- Title -->
+        <mxCell id="title" value="Draw.io Parser MCP Server 架构图" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=20;fontStyle=1;fontColor=#333333;" vertex="1" parent="1">
+          <mxGeometry x="350" y="20" width="400" height="40" as="geometry"/>
+        </mxCell>
+        
+        <!-- External Layer: AI/Client -->
+        <mxCell id="external-group" value="External" style="swimlane;horizontal=0;startSize=30;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="1020" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="ai-client" value="AI Client&#xa;(Claude/LLM)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="external-group">
+          <mxGeometry x="60" y="25" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="drawio-file" value=".drawio 文件&#xa;(XML)" style="shape=document;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="external-group">
+          <mxGeometry x="860" y="20" width="100" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- MCP Interface Layer -->
+        <mxCell id="mcp-group" value="MCP Interface" style="swimlane;horizontal=0;startSize=30;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="200" width="1020" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="cli" value="cli.py&#xa;命令行入口" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="mcp-group">
+          <mxGeometry x="60" y="45" width="100" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="server" value="server.py&#xa;MCP Server" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="mcp-group">
+          <mxGeometry x="220" y="45" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- MCP Tools -->
+        <mxCell id="tool1" value="validate_drawio" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="mcp-group">
+          <mxGeometry x="400" y="20" width="100" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="tool2" value="parse_drawio" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="mcp-group">
+          <mxGeometry x="510" y="20" width="100" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="tool3" value="analyze_drawio" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="mcp-group">
+          <mxGeometry x="620" y="20" width="100" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="tool4" value="get_diagram_summary" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="mcp-group">
+          <mxGeometry x="400" y="60" width="100" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="tool5" value="list_cells" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="mcp-group">
+          <mxGeometry x="510" y="60" width="100" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="tool6" value="find_cell" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="mcp-group">
+          <mxGeometry x="620" y="60" width="100" height="30" as="geometry"/>
+        </mxCell>
+        <mxCell id="tools-label" value="MCP Tools" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;fontSize=11;fontStyle=3;fontColor=#b85450;" vertex="1" parent="mcp-group">
+          <mxGeometry x="480" y="95" width="80" height="20" as="geometry"/>
+        </mxCell>
+        
+        <!-- Core Layer -->
+        <mxCell id="core-group" value="Core Components" style="swimlane;horizontal=0;startSize=30;fillColor=#fff2cc;strokeColor=#d6b656;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="360" width="1020" height="140" as="geometry"/>
+        </mxCell>
+        <mxCell id="parser" value="parser.py&#xa;XML解析器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="core-group">
+          <mxGeometry x="200" y="45" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="validator" value="validator.py&#xa;语法验证器" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="core-group">
+          <mxGeometry x="400" y="45" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="models" value="models.py&#xa;数据模型" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;" vertex="1" parent="core-group">
+          <mxGeometry x="600" y="45" width="120" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- Models Details -->
+        <mxCell id="model-detail" value="DiagramStructure&#xa;DiagramPage&#xa;DiagramCell&#xa;ValidationResult" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;fontSize=9;fontColor=#666666;" vertex="1" parent="core-group">
+          <mxGeometry x="740" y="30" width="100" height="60" as="geometry"/>
+        </mxCell>
+        
+        <!-- Data Flow Layer -->
+        <mxCell id="data-group" value="Data Models" style="swimlane;horizontal=0;startSize=30;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="520" width="1020" height="120" as="geometry"/>
+        </mxCell>
+        <mxCell id="diagram-struct" value="DiagramStructure" style="shape=class;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;" vertex="1" parent="data-group">
+          <mxGeometry x="80" y="35" width="130" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="diagram-page" value="DiagramPage" style="shape=class;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;" vertex="1" parent="data-group">
+          <mxGeometry x="250" y="35" width="110" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="diagram-cell" value="DiagramCell" style="shape=class;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;" vertex="1" parent="data-group">
+          <mxGeometry x="400" y="35" width="100" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="validation-result" value="ValidationResult" style="shape=class;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;" vertex="1" parent="data-group">
+          <mxGeometry x="540" y="35" width="120" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="validation-issue" value="ValidationIssue" style="shape=class;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;" vertex="1" parent="data-group">
+          <mxGeometry x="700" y="35" width="110" height="50" as="geometry"/>
+        </mxCell>
+        <mxCell id="cell-style" value="CellStyle" style="shape=class;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontStyle=1;fontSize=11;" vertex="1" parent="data-group">
+          <mxGeometry x="850" y="35" width="90" height="50" as="geometry"/>
+        </mxCell>
+        
+        <!-- Connections -->
+        <!-- AI to CLI -->
+        <mxCell id="edge1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6c8ebf;strokeWidth=2;" edge="1" parent="1" source="ai-client" target="cli">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="160" y="180" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge1-label" value="stdio" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="115" y="175" width="40" height="20" as="geometry"/>
+        </mxCell>
+        
+        <!-- CLI to Server -->
+        <mxCell id="edge2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82b366;strokeWidth=2;" edge="1" parent="1" source="cli" target="server">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Server to Tools -->
+        <mxCell id="edge3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#b85450;strokeWidth=1;dashed=1;" edge="1" parent="1" source="server" target="tool1">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Server to Parser -->
+        <mxCell id="edge4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82b366;strokeWidth=2;exitX=0.5;exitY=1;entryX=0.5;entryY=0;" edge="1" parent="1" source="server" target="parser">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="300" y="360" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Server to Validator -->
+        <mxCell id="edge5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#82b366;strokeWidth=2;" edge="1" parent="1" source="server" target="validator">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="320" y="340"/>
+              <mxPoint x="500" y="340"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Validator to Parser -->
+        <mxCell id="edge6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d6b656;strokeWidth=1;dashed=1;" edge="1" parent="1" source="validator" target="parser">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="edge6-label" value="uses" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=9;fontColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="345" y="400" width="30" height="15" as="geometry"/>
+        </mxCell>
+        
+        <!-- Parser to Models -->
+        <mxCell id="edge7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d6b656;strokeWidth=1;dashed=1;" edge="1" parent="1" source="parser" target="models">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Validator to Models -->
+        <mxCell id="edge8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d6b656;strokeWidth=1;dashed=1;" edge="1" parent="1" source="validator" target="models">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        
+        <!-- Parser to DrawIO File -->
+        <mxCell id="edge9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#d6b656;strokeWidth=2;endArrow=open;endFill=0;" edge="1" parent="1" source="parser" target="drawio-file">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="300"/>
+              <mxPoint x="950" y="300"/>
+              <mxPoint x="950" y="130"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="edge9-label" value="parse" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=10;fontColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="960" y="200" width="40" height="20" as="geometry"/>
+        </mxCell>
+        
+        <!-- Models to Data Models -->
+        <mxCell id="edge10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;strokeColor=#6c8ebf;strokeWidth=1;dashed=1;" edge="1" parent="1" source="models" target="diagram-struct">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="700" y="510"/>
+              <mxPoint x="185" y="510"/>
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        
+        <!-- Legend -->
+        <mxCell id="legend-box" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#999999;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="800" y="660" width="260" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend-title" value="图例" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=11;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="810" y="665" width="50" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend1" value="" style="endArrow=classic;html=1;strokeColor=#82b366;strokeWidth=2;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="820" y="700" as="sourcePoint"/>
+            <mxPoint x="870" y="700" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend1-text" value="调用关系" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="880" y="690" width="60" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend2" value="" style="endArrow=classic;html=1;strokeColor=#d6b656;strokeWidth=1;dashed=1;" edge="1" parent="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="820" y="725" as="sourcePoint"/>
+            <mxPoint x="870" y="725" as="targetPoint"/>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="legend2-text" value="依赖关系" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="880" y="715" width="60" height="20" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend3" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="820" y="740" width="50" height="15" as="geometry"/>
+        </mxCell>
+        <mxCell id="legend3-text" value="MCP Tool" style="text;html=1;strokeColor=none;fillColor=none;align=left;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="880" y="735" width="60" height="20" as="geometry"/>
+        </mxCell>
+        
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
